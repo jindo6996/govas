@@ -24,6 +24,11 @@ func (gomd *Govasmd) GetTasks(
 }
 
 func (gomd *Govasmd) GetTask(taskId string) (string, error) {
+	if taskId == "" {
+		err := errors.New("GetTask requires a taskId argument")
+		logrus.Error("In GetTask() ", err)
+		return "", err
+	}
 	doc := etree.NewDocument()
 	cmd := doc.CreateElement("get_tasks")
 	cmd.CreateAttr("task_id", taskId)
@@ -34,7 +39,7 @@ func (gomd *Govasmd) GetTask(taskId string) (string, error) {
 func (gomd *Govasmd) StartTask(taskId string) (string, error) {
 	if taskId == "" {
 		err := errors.New("StartTask requires a taskId argument")
-		logrus.Error("In StartTask()", err)
+		logrus.Error("In StartTask() ", err)
 		return "", err
 	}
 	doc := etree.NewDocument()
@@ -45,7 +50,7 @@ func (gomd *Govasmd) StartTask(taskId string) (string, error) {
 func (gomd *Govasmd) ResumeTask(taskId string) (string, error) {
 	if taskId == "" {
 		err := errors.New("resumeTask requires a taskId argument")
-		logrus.Error("In resumeTask()", err)
+		logrus.Error("In resumeTask() ", err)
 		return "", err
 	}
 	doc := etree.NewDocument()
@@ -57,7 +62,7 @@ func (gomd *Govasmd) ResumeTask(taskId string) (string, error) {
 func (gomd *Govasmd) StopTask(taskId string) (string, error) {
 	if taskId == "" {
 		err := errors.New("stopTask requires a taskId argument")
-		logrus.Error("In stopTask()", err)
+		logrus.Error("In stopTask() ", err)
 		return "", err
 	}
 	doc := etree.NewDocument()
@@ -68,7 +73,7 @@ func (gomd *Govasmd) StopTask(taskId string) (string, error) {
 func (gomd *Govasmd) CloneTask(taskId string) (string, error) {
 	if taskId == "" {
 		err := errors.New("createTask requires a taskId argument")
-		logrus.Error("In createTask()", err)
+		logrus.Error("In createTask() ", err)
 		return "", err
 	}
 	doc := etree.NewDocument()

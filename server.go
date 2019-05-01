@@ -43,6 +43,11 @@ func main() {
 		private.DELETE("/tasks/:task_id/:ultimate", utils.DeleteTask)
 		private.POST("/tasks", utils.CreateTask)
 		private.PUT("/tasks", utils.UpdateTask)
+		//report
+		private.GET("/reports", utils.GetReports)
+		private.GET("/reports/:report_id", utils.GetReport)
+		private.DELETE("/reports/:report_id", utils.DeleteReport)
+
 	}
 	_ = r.Run(":8080")
 }

@@ -9,6 +9,11 @@ import (
 	"strings"
 )
 
+type User struct {
+	Name     string `json:"name"`
+	Password string `json:"password"`
+}
+
 func Login(c *gin.Context) {
 	var user User
 	_ = json.NewDecoder(c.Request.Body).Decode(&user)
