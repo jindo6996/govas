@@ -47,6 +47,9 @@ func main() {
 		private.GET("/reports", utils.GetReports)
 		private.GET("/reports/:report_id", utils.GetReport)
 		private.DELETE("/reports/:report_id", utils.DeleteReport)
+		//result
+		private.GET("/results", utils.GetResults)
+		private.GET("/results/:result_id", utils.GetResult)
 
 	}
 	_ = r.Run(":8080")
