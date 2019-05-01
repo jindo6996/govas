@@ -50,6 +50,14 @@ func main() {
 		//result
 		private.GET("/results", utils.GetResults)
 		private.GET("/results/:result_id", utils.GetResult)
+		// schedule
+		private.GET("/schedules", utils.GetSchedules)
+		private.GET("/schedules/:schedule_id/clone", utils.CloneSchedule)
+		private.GET("/schedules/:schedule_id", utils.GetSchedule)
+		private.DELETE("/schedules/:schedule_id/:ultimate", utils.DeleteSchedule)
+		private.DELETE("/schedules/:schedule_id", utils.DeleteSchedule)
+		private.POST("/schedules", utils.CreateSchedule)
+		private.PUT("/schedules", utils.UpdateSchedule)
 
 	}
 	_ = r.Run(":8080")

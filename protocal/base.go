@@ -112,3 +112,9 @@ func checkIntDefine(x int) bool {
 	}
 	return false
 }
+func checkIntDefine2(x int) bool {
+	if x >= 0 {
+		return true
+	}
+	return false
+}
