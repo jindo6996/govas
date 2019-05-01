@@ -37,7 +37,12 @@ func main() {
 		private.PUT("/targets", utils.UpdateTarget)
 
 		//task
-		private.GET("/tasks/:filter/")
+		private.GET("/tasks", utils.GetTasks)
+		private.GET("/tasks/:task_id/:action", utils.ActionTask)
+		private.GET("/tasks/:task_id", utils.GetTask)
+		private.DELETE("/tasks/:task_id/:ultimate", utils.DeleteTask)
+		private.POST("/tasks", utils.CreateTask)
+		private.PUT("/tasks", utils.UpdateTask)
 	}
 	_ = r.Run(":8080")
 }
