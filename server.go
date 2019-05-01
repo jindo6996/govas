@@ -58,7 +58,9 @@ func main() {
 		private.DELETE("/schedules/:schedule_id", utils.DeleteSchedule)
 		private.POST("/schedules", utils.CreateSchedule)
 		private.PUT("/schedules", utils.UpdateSchedule)
-
+		// info
+		private.GET("/infos", utils.GetInfos)
+		private.GET("/infos/:info_type/:info_id", utils.GetInfo)
 	}
 	_ = r.Run(":8080")
 }

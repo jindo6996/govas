@@ -48,7 +48,7 @@ func GetSchedules(c *gin.Context) {
 	logrus.Info("\n\n-------Get all schedules in scanner--------")
 	var payload payloadGetSchedules
 	payload.Trash = false
-	payload.Trash = false
+	payload.Tasks = false
 	_ = c.ShouldBindQuery(&payload)
 	fmt.Println(payload)
 	govas := AuthConnection(c)
