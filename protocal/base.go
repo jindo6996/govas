@@ -26,7 +26,11 @@ func (gomd *Govasmd) sendXmlCommand(xmlCmd *etree.Document) (string, error) {
 		logrus.Error("Error when convert XML to JSON: ", err)
 		return "", err
 	}
-	logrus.Info("JSON respond: ", respondJson.String()[0:50])
+	end := 100
+	if end > len(respondJson.String()) {
+		end = len(respondJson.String())
+	}
+	logrus.Info("JSON respond: ", respondJson.String()[0:end])
 	respondJsonString := respondJson.String()
 	status := gjson.Get(respondJsonString, "*.-status").String()
 	if status[0] != '2' {
@@ -74,7 +78,11 @@ func (gomd *Govasmd) read() (string, error) {
 			break
 		}
 	}
-	logrus.Info("Respond XML: ", respond)
+	end := 100
+	if end > len(respond) {
+		end = len(respond)
+	}
+	logrus.Info("Respond XML: ", respond[0:end])
 	return respond, nil
 
 }
@@ -96,4 +104,11 @@ func toString(condition bool) string {
 	} else {
 		return "0"
 	}
+}
+
+func checkIntDefine(x int) bool {
+	if (x == 0) || (x == 1) {
+		return true
+	}
+	return false
 }
