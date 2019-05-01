@@ -72,8 +72,8 @@ func (gomd *Govasmd) StopTask(taskId string) (string, error) {
 }
 func (gomd *Govasmd) CloneTask(taskId string) (string, error) {
 	if taskId == "" {
-		err := errors.New("createTask requires a taskId argument")
-		logrus.Error("In createTask() ", err)
+		err := errors.New("CloneTask requires a taskId argument")
+		logrus.Error("In CloneTask() ", err)
 		return "", err
 	}
 	doc := etree.NewDocument()
