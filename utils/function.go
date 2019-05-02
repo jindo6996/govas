@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-const DefaultUnixSocketPath = "/var/run/gvmd.sock"
+const DefaultUnixSocketPath = "/var/run/openvasmd.sock"
 
 func CreatJsonErro(mess string) string {
 	return "{\"Error\":\"" + mess + "\"}"
