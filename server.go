@@ -66,6 +66,12 @@ func main() {
 		// info
 		private.GET("/infos", utils.GetInfos)
 		private.GET("/infos/:info_type/:info_id", utils.GetInfo)
+		//feed
+
+		private.GET("/sync/nvt", utils.SynsNVT)
+		private.GET("/sync/cert", utils.SynsCert)
+		private.GET("/sync/scap", utils.SynsSCAP)
+		private.GET("/feeds", utils.GetFeeds)
 	}
 	_ = r.Run(":8080")
 }
