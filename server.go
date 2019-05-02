@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"govas/utils"
@@ -9,8 +10,12 @@ import (
 
 func main() {
 	r := gin.Default()
+	config := cors.DefaultConfig()
+	config.AllowMethods = []string{"GET", "POST", "PUT", "HEAD", "DELETE", "OPTIONS"}
+	config.AllowAllOrigins = true
+	config.AllowHeaders = []string{"X-Requested-With", "Content-Type", "Authorization"}
 	store := sessions.NewCookieStore([]byte("Jindo_GoVASSSSSSSSSSSSSSSSSSS0912093809817238"))
-	r.Use(sessions.Sessions("mysession", store))
+	r.Use(sessions.Sessions("mysession", store), cors.New(config))
 
 	r.POST("/login", utils.Login)
 	r.GET("/logout", utils.Logout)
