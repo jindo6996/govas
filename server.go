@@ -31,7 +31,12 @@ func main() {
 
 		//role
 		private.GET("/roles", utils.GetRoles)
-		private.GET("/roles/:uuid", utils.GetRole)
+		private.GET("/roles/:role_id/clone", utils.CloneRole)
+		private.GET("/roles/:role_id", utils.GetRole)
+		private.DELETE("/roles/:role_id/:ultimate", utils.DeleteRole)
+		private.DELETE("/roles/:role_id", utils.DeleteRole)
+		private.POST("/roles", utils.CreateRole)
+		private.PUT("/roles", utils.UpdateRole)
 
 		//target
 		private.GET("/targets/:trash/:tasks", utils.GetTargets)

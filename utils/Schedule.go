@@ -102,11 +102,11 @@ func DeleteSchedule(c *gin.Context) {
 	govas := AuthConnection(c)
 	respond, err := govas.DeleteSchedule(scheduleId, ultimate)
 	if err != nil {
-		logrus.Error("Get schedule fail: ", err)
+		logrus.Error("Delete schedule fail: ", err)
 		respond = CreatJsonErro(err.Error())
 		c.Data(http.StatusBadRequest, "application/json; charset=utf-8", []byte(respond))
 	} else {
-		logrus.Info("Get schedule success")
+		logrus.Info("Delete schedule success")
 		c.Data(http.StatusOK, "application/json; charset=utf-8", []byte(respond))
 	}
 	_ = govas.Disconnect()
