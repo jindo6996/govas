@@ -13,10 +13,10 @@ func SynsNVT(c *gin.Context) {
 	if err != nil {
 		logrus.Error("Sync NTV fail: ", err)
 		respond = CreatJsonErro(err.Error())
-		c.Data(http.StatusBadRequest, "application/json; charset=utf-8", []byte(respond))
+		c.Data(http.StatusBadRequest, "application/text; charset=utf-8", []byte(respond))
 	} else {
 		logrus.Info("Syns NVT success")
-		c.Data(http.StatusOK, "application/json; charset=utf-8", []byte(respond))
+		c.Data(http.StatusOK, "application/text; charset=utf-8", []byte(respond))
 	}
 	_ = govas.Disconnect()
 }
@@ -27,10 +27,11 @@ func SynsCert(c *gin.Context) {
 	if err != nil {
 		logrus.Error("Sync cert fail: ", err)
 		respond = CreatJsonErro(err.Error())
-		c.Data(http.StatusBadRequest, "application/json; charset=utf-8", []byte(respond))
+		c.Data(http.StatusBadRequest, "application/text; charset=utf-8", []byte(respond))
 	} else {
 		logrus.Info("Sync cert success")
-		c.Data(http.StatusOK, "application/json; charset=utf-8", []byte(respond))
+		c.JSON(http.StatusOK, gin.H{"detail": respond})
+
 	}
 	_ = govas.Disconnect()
 }
@@ -42,10 +43,10 @@ func SynsSCAP(c *gin.Context) {
 	if err != nil {
 		logrus.Error("Sync SCAP fail: ", err)
 		respond = CreatJsonErro(err.Error())
-		c.Data(http.StatusBadRequest, "application/json; charset=utf-8", []byte(respond))
+		c.Data(http.StatusBadRequest, "application/text; charset=utf-8", []byte(respond))
 	} else {
 		logrus.Info("Sync SCAP success")
-		c.Data(http.StatusOK, "application/json; charset=utf-8", []byte(respond))
+		c.JSON(http.StatusOK, gin.H{"detail": respond})
 	}
 	_ = govas.Disconnect()
 }
@@ -56,10 +57,10 @@ func GetFeeds(c *gin.Context) {
 	if err != nil {
 		logrus.Error("Get feeds fail: ", err)
 		respond = CreatJsonErro(err.Error())
-		c.Data(http.StatusBadRequest, "application/json; charset=utf-8", []byte(respond))
+		c.Data(http.StatusBadRequest, "application/text; charset=utf-8", []byte(respond))
 	} else {
 		logrus.Info("Get feed success")
-		c.Data(http.StatusOK, "application/json; charset=utf-8", []byte(respond))
+		c.Data(http.StatusOK, "application/text; charset=utf-8", []byte(respond))
 	}
 	_ = govas.Disconnect()
 }
