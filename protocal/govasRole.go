@@ -17,3 +17,7 @@ func (gomd *Govasmd) GetRole(uuid string) (string, error) {
 	cmd.CreateAttr("user_id", uuid)
 	return gomd.sendXmlCommand(doc)
 }
+
+//func (gomd *Govasmd) DeleteRole(uuid string) (string, error) {
+//
+//}
