@@ -13,6 +13,7 @@ func main() {
 	config := cors.DefaultConfig()
 	config.AllowMethods = []string{"GET", "POST", "PUT", "HEAD", "DELETE", "OPTIONS"}
 	config.AllowAllOrigins = true
+	config.MaxAge = 1200
 	config.AllowHeaders = []string{"X-Requested-With", "Content-Type", "Authorization"}
 	store := sessions.NewCookieStore([]byte("Jindo_GoVASSSSSSSSSSSSSSSSSSS0912093809817238"))
 	r.Use(sessions.Sessions("mysession", store), cors.New(config))
