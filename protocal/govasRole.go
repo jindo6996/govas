@@ -19,7 +19,7 @@ func (gomd *Govasmd) GetRoles(filter string, filter_id string) (string, error) {
 func (gomd *Govasmd) GetRole(uuid string) (string, error) {
 	doc := etree.NewDocument()
 	cmd := doc.CreateElement("get_roles")
-	cmd.CreateAttr("user_id", uuid)
+	cmd.CreateAttr("role_id", uuid)
 	return gomd.sendXmlCommand(doc)
 }
 
@@ -66,7 +66,7 @@ func (gomd *Govasmd) CreateRole(name string, comment string, users []string) (st
 	return gomd.sendXmlCommand(doc)
 }
 func (gomd *Govasmd) UpdateRole(roleId, name, comment string, users []string) (string, error) {
-	if name == "" {
+	if roleId == "" {
 		err := errors.New("UpdateRole Requires roleId")
 		logrus.Error("In UpdateRole()", err)
 		return "", err
