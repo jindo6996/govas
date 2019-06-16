@@ -12,7 +12,7 @@ func main() {
 	r := gin.Default()
 	config := cors.DefaultConfig()
 	config.AllowMethods = []string{"GET", "POST", "PUT", "HEAD", "DELETE", "OPTIONS"}
-	config.AllowAllOrigins = true
+	config.AllowOrigins = []string{"http://localhost:9009"}
 	config.AllowCredentials = true
 	config.AllowHeaders = []string{"X-Requested-With", "Content-Type", "Authorization"}
 	store := sessions.NewCookieStore([]byte("Jindo_GoVASSSSSSSSSSSSSSSSSSS0912093809817238"))
