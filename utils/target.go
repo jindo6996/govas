@@ -10,7 +10,6 @@ import (
 
 type payloadCreateTarget struct {
 	Name               string   `json:"name"`
-	MakeUnique         bool     `json:"make_unique"`
 	AssetHostsFilter   string   `json:"asset_hosts_filter"`
 	Hosts              []string `json:"hosts"`
 	Comment            string   `json:"comment"`
@@ -83,7 +82,7 @@ func CreateTarget(c *gin.Context) {
 	var payload payloadCreateTarget
 	_ = json.NewDecoder(c.Request.Body).Decode(&payload)
 	govas := AuthConnection(c)
-	respond, err := govas.CreateTarget(payload.Name, payload.MakeUnique, payload.AssetHostsFilter, payload.Hosts, payload.Comment, payload.ExcludeHosts, payload.SshCredentialId, payload.SshCredentialPort,
+	respond, err := govas.CreateTarget(payload.Name, payload.AssetHostsFilter, payload.Hosts, payload.Comment, payload.ExcludeHosts, payload.SshCredentialId, payload.SshCredentialPort,
 		payload.SmbCredentialId, payload.SnmpCredentialId, payload.EsxiCredentialId, payload.AliveTests, payload.ReverseLookupOnly, payload.ReverseLookupUnify, payload.PortRange, payload.PortListId)
 	if err != nil {
 		logrus.Info("Create user fail")
