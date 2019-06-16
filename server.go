@@ -13,7 +13,7 @@ func main() {
 	config := cors.DefaultConfig()
 	config.AllowMethods = []string{"GET", "POST", "PUT", "HEAD", "DELETE", "OPTIONS"}
 	config.AllowAllOrigins = true
-	config.MaxAge = 1200
+	config.AllowCredentials = true
 	config.AllowHeaders = []string{"X-Requested-With", "Content-Type", "Authorization"}
 	store := sessions.NewCookieStore([]byte("Jindo_GoVASSSSSSSSSSSSSSSSSSS0912093809817238"))
 	r.Use(sessions.Sessions("mysession", store), cors.New(config))
@@ -41,6 +41,8 @@ func main() {
 
 		//target
 		private.GET("/targets/:trash/:tasks", utils.GetTargets)
+		private.GET("/targets/:trash", utils.GetTargets)
+		private.GET("/targets", utils.GetTargets)
 		private.POST("/targets", utils.CreateTarget)
 		private.GET("/target/:id", utils.GetTarget)
 		private.DELETE("/targets/:ultimate/:id", utils.DeleteTarget)
@@ -82,7 +84,12 @@ func main() {
 		// restore
 		private.GET("/restore/:entity_id", utils.Restore)
 	}
-	_ = r.Run(":8080")
+	s := &http.Server{
+		Addr:           ":8080",
+		Handler:        r,
+		MaxHeaderBytes: 1 << 20,
+	}
+	_ = s.ListenAndServe()
 }
 func AuthRequired() gin.HandlerFunc {
 	return func(c *gin.Context) {

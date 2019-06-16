@@ -40,7 +40,6 @@ func (gomd *Govasmd) GetTarget(id string) (string, error) {
 }
 func (gomd *Govasmd) CreateTarget(
 	name string,
-	makeUnique bool,
 	assetHostsFilter string,
 	hosts []string,
 	comment string,
@@ -64,7 +63,6 @@ func (gomd *Govasmd) CreateTarget(
 	cmd := doc.CreateElement("create_target")
 	nameXml := cmd.CreateElement("name")
 	nameXml.CreateCharData(name)
-	nameXml.CreateElement("make_unique").CreateCharData(toString(makeUnique))
 
 	if assetHostsFilter != "" {
 		cmd.CreateElement("asset_hosts").CreateAttr("filter", assetHostsFilter)
